@@ -6,9 +6,8 @@ import 'package:submission_fudamental_flutter/ui/restaurant_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  final service = Get.put(Service());
+  final service = Get.put(Service(),permanent: true);
   runApp(MyApp());
 }
 

@@ -13,14 +13,9 @@ class Service extends GetxController {
       receiveTimeout: 3000,
     ));
 
-    /// customization
     dio.interceptors.add(PrettyDioLogger(
-
-        ///requestHeader: true,
         requestBody: true,
         responseBody: true,
-
-        ///responseHeader: false,
         error: true,
         compact: true,
         maxWidth: 150));

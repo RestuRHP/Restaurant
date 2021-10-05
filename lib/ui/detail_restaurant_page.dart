@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:submission_fudamental_flutter/controller/detail_controller.dart';
 import 'package:submission_fudamental_flutter/data/model/detail_restaurant_response.dart';
 import 'package:submission_fudamental_flutter/res/res_color.dart';
@@ -70,9 +71,30 @@ class _DetailRestaurantPageState extends State<DetailRestaurantPage> {
                     backgroundColor: Colors.red,
                     textColor: Colors.white,
                   );
-                  return Container(
-                    height: 0,
-                    width: 0,
+                  return Center(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Container(
+                              height:200,
+                              child: Lottie.asset('assets/images/no_connection.json'),
+                            ),
+                          ),
+                          Text(
+                            "Tidak ada koneksi",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                                color: ResColor.darkText,
+                                fontSize: 22,
+                                fontFamily: "Poppins",
+                                fontWeight: FontWeight.w700),
+                          ),
+                        ],
+                      ),
+                    ),
                   );
                 }else{
                   return Padding(

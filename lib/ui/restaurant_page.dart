@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 import 'package:submission_fudamental_flutter/controller/home_controller.dart';
 import 'package:submission_fudamental_flutter/data/model/restaurant_list_response.dart';
 import 'package:submission_fudamental_flutter/res/res_color.dart';
@@ -71,6 +72,9 @@ class _RestaurantPageState extends State<RestaurantPage> {
                       child: CircularProgressIndicator(),
                     );
                   } else if (homeCtr.listRestaurant.value.restaurants==null) {
+                    print('================================');
+                    print('================================');
+                    print('================================');
                     return Container(
                       height: 0,
                       width: 0,
@@ -82,11 +86,58 @@ class _RestaurantPageState extends State<RestaurantPage> {
                       backgroundColor: Colors.red,
                       textColor: Colors.white,
                     );
-                    return Container(
-                      height: 0,
-                      width: 0,
+                    return Center(
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Container(
+                                height:200,
+                                child: Lottie.asset('assets/images/no_connection.json'),
+                              ),
+                            ),
+                            Text(
+                              "Tidak ada koneksi",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: ResColor.darkText,
+                                  fontSize: 22,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ),
                     );
-                  } else {
+                  } else if(homeCtr.listRestaurant.value.restaurants.isEmpty){
+                    return Center(
+                      child: Container(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Container(
+                                height:200,
+                                child: Lottie.asset('assets/images/no_data.json'),
+                              ),
+                            ),
+                            Text(
+                              "Data tidak ditemukan",
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  color: ResColor.darkText,
+                                  fontSize: 22,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  }else {
                     return ListView.separated(
                       padding: EdgeInsets.only(bottom: 10.0),
                       separatorBuilder: (context, index) {
